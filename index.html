@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Princess Birthday Adventure 👑</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Bubblegum+Sans&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pari-pink: #ff85a2;
+            --magic-purple: #c77dff;
+            --sunshine-yellow: #ffee99;
+            --sky-blue: #a2d2ff;
+            --white: #ffffff;
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Bubblegum Sans', cursive;
+            overflow: hidden;
+            background: linear-gradient(135deg, #fceaf1 0%, #e8ddfc 100%);
+        }
+
+        /* --- Magical Background --- */
+        .magic-element {
+            position: absolute; pointer-events: none; z-index: 0;
+            animation: float 10s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* --- Main Storybook --- */
+        .book-container {
+            position: relative;
+            width: 90vw; height: 85vh;
+            max-width: 1100px;
+            margin: 5vh auto;
+            background: var(--white);
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            border: 15px solid var(--white);
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .slider {
+            display: flex;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+        }
+
+        /* --- High Quality Styles --- */
+        h1 {
+            font-family: 'Chewy', cursive;
+            font-size: 4rem;
+            color: var(--pari-pink);
+            margin: 0;
+            text-shadow: 3px 3px 0px var(--sunshine-yellow);
+        }
+
+        p {
+            font-size: 1.8rem;
+            color: #555;
+            margin: 15px 0;
+            max-width: 800px;
+        }
+
+        /* --- Photo Frames (Badi Photos) --- */
+        .big-photo-frame {
+            width: 80%;
+            height: 60%;
+            border: 12px solid var(--white);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            overflow: hidden;
+            background: #eee;
+            margin-top: 20px;
+        }
+
+        .big-photo-frame img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+
+        /* --- Photo Gallery Grid (Slide 4) --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 90%;
+            margin-top: 20px;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 10px 10px 30px 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: rotate(-2deg);
+            transition: 0.3s;
+        }
+        .polaroid:nth-child(even) { transform: rotate(3deg); }
+        .polaroid img { width: 100%; height: 150px; object-fit: cover; }
+
+        /* --- Navigation --- */
+        .nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: var(--pari-pink); color: white;
+            border: none; width: 60px; height: 60px; border-radius: 50%;
+            font-size: 2rem; cursor: pointer; z-index: 100;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        #prevBtn { left: 20px; }
+        #nextBtn { right: 20px; }
+
+        .music-btn {
+            position: fixed; top: 20px; right: 20px;
+            background: var(--sunshine-yellow); border: none;
+            padding: 15px; border-radius: 50%; cursor: pointer;
+            font-size: 1.5rem; z-index: 200;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="music-btn" onclick="toggleMusic()">🎵</button>
+    <audio id="bgMusic" loop>
+        <source src="birthday.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="magic-element" style="top:10%; left:5%; font-size: 5rem;">🌈</div>
+    <div class="magic-element" style="bottom:10%; right:5%; font-size: 5rem;">🦄</div>
+    <div class="magic-element" style="top:20%; right:10%; font-size: 3rem;">✨</div>
+    <div class="magic-element" style="bottom:20%; left:10%; font-size: 4rem;">☁️</div>
+
+    <div class="book-container">
+        <div class="slider" id="slider">
+            
+            <div class="slide" style="background: #fffafa;">
+                <h1>Happy Birthday <br> Meri Choti Rani! 👸</h1>
+                <p>Aaj tum pure 5 saal ki ho gayi ho! Chalo tumhara birthday magic shuru karte hain...</p>
+                <div class="big-photo-frame">
+                    <img src="photo 11.jpg" alt="Birthday Girl">
+                </div>
+            </div>
+
+            <div class="slide" style="background: #fdf2ff;">
+                <h1>Pariyon Ki Kahani ✨</h1>
+                <p>Tum bilkul ek nanhi pari jaisi ho, jo asman se niche aayi hai sabko khush karne!</p>
+                <div class="big-photo-frame" style="border-color: var(--magic-purple);">
+                    <img src="photo 22.jpg" alt="Princess">
+                </div>
+            </div>
+
+            <div class="slide" style="background: #f0faff;">
+                <h1>Masti Khor! 😜</h1>
+                <p>Tum thodi naughty ho, thodi pyaari ho, par mere dil ke sabse kareeb ho!</p>
+                <div class="big-photo-frame" style="border-color: var(--sky-blue);">
+                    <img src="photo 33.jpg" alt="Fun Moment">
+                </div>
+            </div>
+
+            <div class="slide" style="background: #fffde7;">
+                <h1>Meri Pyaari Memories 📸</h1>
+                <div class="gallery-grid">
+                    <div class="polaroid"><img src="photo 88.jpg"></div>
+                    <div class="polaroid"><img src="photo 1010.jpg"></div>
+                    <div class="polaroid"><img src="photo 55.jpg"></div>
+                    <div class="polaroid"><img src="photo 66.jpg"></div>
+                    <div class="polaroid"><img src="photo 77.jpg"></div>
+                    <div class="polaroid"><h1>🎂</h1></div>
+                </div>
+                <p>I Love You So Much! ❤️</p>
+            </div>
+
+        </div>
+
+        <button id="prevBtn" class="nav-btn" onclick="moveSlide(-1)">❮</button>
+        <button id="nextBtn" class="nav-btn" onclick="moveSlide(1)">❯</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slider = document.getElementById('slider');
+        const music = document.getElementById('bgMusic');
+
+        function moveSlide(step) {
+            const totalSlides = document.querySelectorAll('.slide').length;
+            currentSlide = (currentSlide + step + totalSlides) % totalSlides;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function toggleMusic() {
+            if (music.paused) { music.play(); } 
+            else { music.pause(); }
+        }
+    </script>
+</body>
+</html>
